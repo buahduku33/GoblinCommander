@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour {
 
+    public GameObject credits;
 	// Use this for initialization
 	void Start () {
 		
@@ -23,5 +24,15 @@ public class menu : MonoBehaviour {
     public void exit()
     {
         Application.Quit();
+    }
+
+    public void Credits()
+    {
+        credits.SetActive(true);
+    }
+
+    public void Back()
+    {
+        credits.SetActive(false);
     }
 }

@@ -34,26 +34,16 @@ public class Movement : MonoBehaviour {
         //pengaturan rotation player
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         ray.direction = new Vector3(Mathf.Clamp(ray.direction.x, -0.3f,0.3f), Mathf.Clamp(ray.direction.y,-1f,-0.9f), Mathf.Clamp(ray.direction.z, -0.3f, 0.3f));
-        if (Physics.Raycast(ray, out hit, distancecamera, -1)){
+        if (Physics.Raycast(ray, out hit, distancecamera,-1)){
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
-
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.forward * meleerange, Color.yellow);
         
         //pengaturan melee attack
         if (Input.GetMouseButton(0))
         {
             swingsword.Play();
             animation.SetBool("attack", true);
-            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.forward *  meleerange, out melee, meleerange,  -1))
-            {
-                
-                if (melee.collider.tag == "Enemy")
-                {
-                    enemyhit.Play();
-                    Destroy(melee.transform.gameObject);//hancur kalo serang musuh
-                }
-            }
+            StartCoroutine(attackanimation());
         }
 
         //pengaturan movement
@@ -93,5 +83,20 @@ public class Movement : MonoBehaviour {
         heart[imagenumber].SetActive(false);
         takedamagesfx.Play();
         imagenumber++;
+    }
+
+    //pengaturan animasi attack
+    IEnumerator attackanimation()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.forward * meleerange, out melee, meleerange, -1))
+        {
+
+            if (melee.collider.tag == "Enemy")
+            {
+                enemyhit.Play();
+                Destroy(melee.transform.gameObject);//hancur kalo serang musuh
+            }
+        }
     }
 }

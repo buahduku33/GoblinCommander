@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 2d4aeba9ed152f4419bb89a1b8b2efbd
-timeCreated: 1530463663
+timeCreated: 1531711301
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: goblin ui polos_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -113,7 +114,21 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: goblin ui polos_0
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 725
+        width: 585
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
